@@ -25,6 +25,7 @@ public class Login extends TestBase {
                 .email("evnikel@gmail.com")
                 .password("EB106201!")
                 .build();
+        logger.info("Test login positive 1"+user.getEmail()+ ""+user.getPassword());
         app.getUser().initLogin();
         app.getUser().pause(2000);
         app.getUser().fillLoginForm(user);
@@ -44,6 +45,7 @@ public class Login extends TestBase {
         app.getUser().fillLoginForm2("evnikel@gmail.com","EB106201eb!");
         app.getUser().submitLogin();
         app.getUser().pause(2000);
+        logger.info("Logged ----");
 
 
         Assert.assertTrue(app.getUser().isLogged());
