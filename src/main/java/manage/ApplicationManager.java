@@ -1,8 +1,7 @@
-package manager;
+package manage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,6 +13,8 @@ public class ApplicationManager {
 
     UserHelper user;
     BoardHelper board;
+    manage.CardHelper card;
+    manage.ListHelper list;
 
     public void init(){
         wd = new ChromeDriver();
@@ -26,6 +27,8 @@ public class ApplicationManager {
 
         user = new UserHelper(wd);
         board = new BoardHelper(wd);
+        list = new manage.ListHelper(wd);
+        card= new manage.CardHelper(wd);
 
         user.login("evnikel@gmail.com","EB106201eb!");
 
@@ -42,6 +45,14 @@ public class ApplicationManager {
 
     public BoardHelper getBoard(){
         return board;
+    }
+
+    public manage.CardHelper getCard() {
+        return card;
+    }
+
+    public manage.ListHelper getList() {
+        return list;
     }
 
 
