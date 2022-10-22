@@ -13,8 +13,8 @@ public class ApplicationManager {
 
     UserHelper user;
     BoardHelper board;
-    manage.CardHelper card;
-    manage.ListHelper list;
+    CardHelper card;
+    ListHelper list;
 
     public void init(){
         wd = new ChromeDriver();
@@ -27,8 +27,8 @@ public class ApplicationManager {
 
         user = new UserHelper(wd);
         board = new BoardHelper(wd);
-        list = new manage.ListHelper(wd);
-        card= new manage.CardHelper(wd);
+        list = new ListHelper(wd);
+        card= new CardHelper(wd);
 
         user.login("evnikel@gmail.com","EB106201eb!");
 
@@ -47,11 +47,11 @@ public class ApplicationManager {
         return board;
     }
 
-    public manage.CardHelper getCard() {
+    public CardHelper getCard() {
         return card;
     }
 
-    public manage.ListHelper getList() {
+    public ListHelper getList() {
         return list;
     }
 

@@ -14,6 +14,7 @@ public class BoardCreation extends TestBase {
         int boardCountBeforeCreation = app.getBoard().getBoardCount();
 
         app.getBoard().initBoardCreation();
+        app.getBoard().pause(5000);
         app.getBoard().fillInBoardCreationForm(board);
         app.getBoard().scrolldownTheForm();
         app.getBoard().pause(2000);
