@@ -4,7 +4,7 @@ import model.Card;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class CardHelper extends HelperBase {
+public class CardHelper extends HelperBase{
     public CardHelper(WebDriver wd) {
         super(wd);
     }

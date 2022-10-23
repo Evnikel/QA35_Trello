@@ -3,7 +3,7 @@ package manage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class ListHelper extends HelperBase {
+public class ListHelper extends HelperBase{
     public ListHelper(WebDriver wd) {
         super(wd);
     }

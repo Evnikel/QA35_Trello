@@ -15,7 +15,6 @@ public class BoardHelper extends HelperBase{
     public void initBoardCreation() {
         click(By.cssSelector("[data-test-id='header-create-menu-button']"));
         click(By.cssSelector("[aria-label='BoardIcon']"));
-
     }
 
     public void fillInBoardCreationForm(Board board) {
@@ -41,12 +40,10 @@ public class BoardHelper extends HelperBase{
     }
 
     public int getBoardCount() {
-        return wd.findElements(By.cssSelector(".boards-page-board-section-list-item"))
-                .size()-1-recentlyViewedBoards();
+        return wd.findElements(By.cssSelector(".boards-page-board-section-list-item")).size()-1-recentlyViewedBoards();
     }
     public int recentlyViewedBoards(){
-        return wd.findElements(By.xpath("//*[contains(@class,'icon-clock')]/../..//div"))
-                .size();
+        return wd.findElements(By.xpath("//*[contains(@class,'icon-clock')]/../..//div")).size();
     }
 
     public void clickOnTheFirstBoard() {
@@ -100,6 +97,4 @@ public class BoardHelper extends HelperBase{
     public void retutnToCreationPage() {
         click(By.cssSelector("._0F1JkilrBuDsnA"));
     }
-
-
 }
