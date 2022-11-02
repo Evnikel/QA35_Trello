@@ -2,6 +2,8 @@ package manage;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 import org.openqa.selenium.support.events.WebDriverListener;
 import org.slf4j.ILoggerFactory;
@@ -19,29 +21,41 @@ public class ApplicationManager {
     CardHelper card;
     ListHelper list;
     AtlassianHelper atlassian;
+    String browser;
 
-    public void init(){
-        WebDriverListener listener= new MyListener();
-        wd = new ChromeDriver();
-        logger.info("Test starts---");
+    public ApplicationManager(String browser) {
+        this.browser = browser;
+    }
+
+    public void init() {
+        if (browser.equals(Browser.CHROME.browserName())) {
+            wd = new ChromeDriver();
+            logger.info("Tests start in ChromeDriver");
+        } else if (browser.equals(Browser.EDGE.browserName())) {
+            wd = new EdgeDriver();
+            logger.info("Tests start in EdgeDriver");
+        }
+
+        WebDriverListener listener = new MyListener();
         wd = new EventFiringDecorator<>(listener).decorate(wd);
+        logger.info("Test starts---");
         wd.manage().window().maximize();
         wd.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         wd.navigate().to("https://trello.com/");
 
-        user=new UserHelper(wd);
-        board=new BoardHelper(wd);
+        user = new UserHelper(wd);
+        board = new BoardHelper(wd);
         list = new ListHelper(wd);
-        card= new CardHelper(wd);
+        card = new CardHelper(wd);
         atlassian = new AtlassianHelper(wd);
 
-        user.login("evnikel@gmail.com","EB106201eb!");
+        user.login("evnikel@gmail.com", "EB106201eb!");
 
     }
 
-    public void quit(){
+    public void quit() {
         wd.close();
-        wd.quit();
+        //wd.quit();
     }
 
     public UserHelper getUser() {
@@ -64,7 +78,7 @@ public class ApplicationManager {
         return atlassian;
     }
 
-    public String getUrl(){
+    public String getUrl() {
         return wd.getCurrentUrl();
     }
 }
